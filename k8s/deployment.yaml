@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harness-python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: harness-python-app
+
+  template:
+    metadata:
+      labels:
+        app: harness-python-app
+
+    spec:
+      containers:
+      - name: harness-python-app
+        image: <+artifact.image>
+        ports:
+        - containerPort: 5000
